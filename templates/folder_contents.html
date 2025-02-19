@@ -1,0 +1,14 @@
+<ul>
+    <h2>Contents of {{ subpath }}:</h2>
+    <ul>
+        {% for item in contents %}
+            <li>
+                {% if '.' in item %}
+                    <a href="/list_uploads/{{ subpath }}/{{ item }}" target="_blank">{{ item }}</a>
+                {% else %}
+                    <a href="/list_uploads/{{ subpath }}/{{ item }}">{{ item }}/</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</ul>

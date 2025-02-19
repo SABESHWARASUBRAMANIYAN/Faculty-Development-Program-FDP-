@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+
+    <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+</head>
+<body>
+    
+   
+    <style>
+        .footer {
+            margin-top: 150px; /* Adjust the value to control the amount of space */
+        }
+    </style>
+    
+    <div class="header sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="index.html">
+                <img src="{{ url_for('static', filename='img/fdp.jpg') }}" alt="Icon" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="my-navbar">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-tem">
+                        <i class="fas fa-bell"></i>Notifications
+                    </li>
+                        
+                    <div class="nav-vl"></div>
+                    <li class="nav-item">
+                        <a href="{{ url_for('index') }} "><span class="las la-file-import"></span><span>Back to Home Page</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--<form id="search-form" action="{{ url_for('search') }}" method="GET">
+           
+        <div class="input-group city-search">
+            <input type="text" class="form-control input-city" id='city' name='city' placeholder="Enter your query to search" />
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date">
+            
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"/>
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-secondary">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    
+    
+    <table border="5">
+    
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Department</th>
+                <th>Program Name</th>
+                <th>No of Days</th>   -->
+                
+                <!-- Add more table headers for each column -->
+                <!--
+            </tr>
+        </thead>
+     
+        <tbody>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result[0] }}</td>
+                    <td>{{ result[1] }}</td>
+                    <td>{{ result[2] }}</td>
+                    <td>{{ result[3] }}</td>
+                    <td>{{ result[4] }}</td>
+                    <td>{{ result[5] }}</td>
+
+    
+                -->
+                    <!-- Add more table cells for each column -->
+                    <!--
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% if message %}
+    {{message}}
+    {% endif %}
+    <form action="{{ url_for('export_csv') }}" method="POST">
+        {% if results %}
+            <input type="hidden" name="result[]" value="{{ results|tojson|safe }}">
+        {% endif %}
+        <button type="submit" class="btn btn-success">Export to CSV</button>
+    </form>
+-->
+
+    <!-- Add the rest of your HTML content here -->
+    <!--
+    <div id="loading">
+    </div>
+   
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb py-2">
+            <li class="breadcrumb-item">
+                <a href="{{ url_for('index') }}">Home</a>
+            </li>
+
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{{ url_for('dashboard1') }}">Search</a>
+            </li>
+        </ol>
+    </nav>
+
+-->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb py-2">
+        <li class="breadcrumb-item">
+            <a href="{{ url_for('index') }}">Home</a>
+        </li>
+
+        <li class="breadcrumb-item active" aria-current="page">
+            <a href="{{ url_for('dashboard1') }}">Notifications</a>
+        </li>
+    </ol>
+</nav>
+
+      
+<div class="my-profile page-container">
+   
+</div>
+
+<div class="footer">
+    <div class="page-container footer-container">
+        <div class="footer-cities">
+            <div class="footer-city">
+                <a href="#">Quick links</a>
+            </div>
+            <div class="footer-city">
+                <a href="#">Contact info</a>
+            </div>
+            <div class="footer-city">
+                <a href="#">Results</a>
+            </div>
+            <div class="footer-city">
+                <a href="#">Faculty list</a>
+            </div>
+            
+        </div>
+        <div class="footer-copyright">© 2023 Copyright  </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+
+    
+        
+    
+</body>
+</html>

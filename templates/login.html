@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* CSS for the navigation bar */
+        .navbar {
+            background-color: #FDC11C;
+            width: 100%;
+            text-align: center;
+            padding: 2px;
+        }
+        .column {
+            width: 33.33%;
+            float: left;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .column:last-child {
+            border-right: none;
+        }
+
+        .navbar-bottom {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column p,
+        .column h3,
+        .column h4 {
+            margin: 0;
+            color: #fff;
+        }
+
+        .column h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        }
+
+        .column p {
+        font-size: 16px;
+        line-height: 1.5;
+        }
+
+        .navbar-bottom:hover {
+        cursor: pointer;
+        background-color: #555;
+        }
+
+        .message {
+            color:#20e429;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .invalid_password{
+            color:#e21b36;;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .invalid_staffid{
+            color:#e21b36;;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2  style="color: #333;font-size: 46px;">FACULTY DEVELOPMENT PROGRAM </h2>
+        <h6 style="color: #333;font-size: 26px;">DEPARTMENT OF IST,GUINDY</h6>
+    </div>
+
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/" method="post">
+            <div class="input-group">
+                <label for="username">Staff ID <span class="required">*</span></label>
+                <input type="text" name="staffid" id="staffid" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" name="password" id="password"  required  >
+            </div>
+            <input type="submit" value="Log in">
+            <a href="/forgot-password">Forgot Password?</a>
+            <div class="change-password-link">
+                <a href="/change-password">Change Password</a>
+            </div>
+            {% if invalid_staffid  %}
+                <div class="invalid_staffid">{{ invalid_staffid}}</div>
+            {% endif %}
+            {% if message %}
+                <div class="message">{{ message }}</div>
+            {% endif %}
+            {% if invalid_password  %}
+                <div class="invalid_password">{{ invalid_password }}</div>
+            {% endif %}
+            
+            
+            
+        </form>
+        
+    </div>
+    
+
+    <div class="navbar-bottom">
+        <div class="column">
+            <p>COPYRIGHT &copy; 2023 DIST</p> 
+            <p>All rights reserved.</p>
+        </div>
+        <div class="column">
+            <h3>Contact Us</h3>
+            <p>Dr. P. Geetha</p>
+            <p>Associate Professor</p>
+            <p>Department of Information Science and Technology</p>
+            <p>CEG Campus, Anna University</p>
+            <p>Chennai-25</p>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <p>Phone: 044-22358842</p>
+            <p>Email: geethap@annauniv.edu</p>
+        </div>
+    </div>
+    
+</body>
+</html>

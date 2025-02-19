@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin View Files</title>
+</head>
+<body>
+    <h1>Admin View Files</h1>
+    <form method="POST">
+        <label for="staff_id">Enter Staff ID:</label>
+        <input type="text" name="staff_id" id="staff_id" required>
+        <input type="submit" value="View Files">
+    </form>
+    <button onclick="window.location.href='{{ url_for('home1') }}'">Back to Home</button>
+</body>
+</html>

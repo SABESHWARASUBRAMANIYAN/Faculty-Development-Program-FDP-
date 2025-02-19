@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+
+    <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+</head>
+<body>
+    
+   
+    <style>
+        .footer {
+            margin-top: 150px; /* Adjust the value to control the amount of space */
+        }
+    </style>
+    
+    <div class="header sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="index.html">
+                <img src="{{ url_for('static', filename='img/fdp.jpg') }}" alt="Icon" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="my-navbar">
+                <ul class="navbar-nav">
+                    <div class="nav-name">
+                        Hi,Staff id:{{ staff_id }}
+
+                    </div>
+                    <li class="nav-tem">
+                        <i class="fas fa-telescope"></i>Search Query
+                    </li>
+                        
+                    <div class="nav-vl"></div>
+                    <li class="nav-item">
+                        <a href="{{ url_for('logout') }} "><span class="las la-file-import"></span><span>Log out</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <form action="{{ url_for('search') }}" method="get">
+        <label for="keyword">Keyword:</label>
+        <input type="text" name="keyword" required>
+        
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date">
+        
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date">
+        
+        <button type="submit">Search</button>
+    </form>
+    
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if results %}
+        <h2>Search Results</h2>  
+
+        <!-- Add a table to display search results -->
+        <table border="1">
+            <tr>
+                <!-- Add table headers based on the selected columns -->
+                {% if display_columns %}
+                    {% for column in display_columns.split(',') %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                {% else %}
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                    <th>Column 3</th>
+                    <!-- Add more columns as needed -->
+                {% endif %}
+            </tr>
+
+            <!-- Add table rows based on the search results -->
+            {% for row in results %}
+                <tr>
+                    {% for item in row %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Add export options -->
+        <p>
+            Export Results:
+            <a href="{{ url_for('search', export_format='csv', **request.args) }}">CSV</a>
+            <!-- Add more export formats as needed -->
+        </p>s
+    {% endif %}
+
+    <!-- Add the rest of your HTML content here -->
+    <div id="loading">
+    </div>
+   
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb py-2">
+            <li class="breadcrumb-item">
+                <a href="{{ url_for('index') }}">Home</a>
+            </li>
+
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{{ url_for('dashboard1') }}">Search</a>
+            </li>
+        </ol>
+    </nav>
+
+
+
+      
+<div class="my-profile page-container">
+   
+</div>
+
+<div class="footer">
+    <div class="page-container footer-container">
+        <div class="footer-cities">
+            <div class="footer-city">
+                <a href="property_list.html">Quick links</a>
+            </div>
+            <div class="footer-city">
+                <a href="property_list.html">Contact info</a>
+            </div>
+            <div class="footer-city">
+                <a href="property_list.html">Results</a>
+            </div>
+            <div class="footer-city">
+                <a href="property_list.html">Faculty list</a>
+            </div>
+            
+        </div>
+        <div class="footer-copyright">© 2022 Copyright  </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+
+    
+        
+    
+</body>
+</html>

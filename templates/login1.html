@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div class="header sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="index.html">
+                <img src="{{ url_for('static', filename='img/fdp.jpg') }}" alt="Icon" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="my-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signup-modal">
+                            <i class="fas fa-user"></i>Dashboard
+                        </a>
+                    </li>
+                    <div class="nav-vl"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#login-modal">
+                            <i class="fas fa-sign-in-alt"></i>Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb py-2">
+            <li class="breadcrumb-item">
+                <a href="{{ url_for('index') }}">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{{ url_for('login1') }}">Login</a>
+            </li>
+        </ol>
+    </nav>
+    <p>Hello user!</p>
+    <a href="{{ url_for('dashboard1') }}">click here to view dashboard</a>
+    
+    <a href="{{ url_for('login_inter')}}">Click here to view login options</a>
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/" method="post">
+            <div class="input-group">
+                <label for="username">Staff ID <span class="required">*</span></label>
+                <input type="text" name="staffid" id="staffid" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" name="password" id="password"  required  >
+            </div>
+            <input type="submit" value="Log in">
+            <a href="/forgot-password">Forgot Password?</a>
+            <div class="change-password-link">
+                <a href="/change-password">Change Password</a>
+            </div>
+            {% if invalid_staffid  %}
+                <div class="invalid_staffid">{{ invalid_staffid}}</div>
+            {% endif %}
+            {% if message %}
+                <div class="message">{{ message }}</div>
+            {% endif %}
+            {% if invalid_password  %}
+                <div class="invalid_password">{{ invalid_password }}</div>
+            {% endif %}
+            
+            
+            
+        </form>
+</body>
+</html>

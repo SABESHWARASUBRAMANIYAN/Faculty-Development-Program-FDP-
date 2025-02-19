@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* ... Existing styles ... */
+
+        /* New styles for the buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .login-button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>Login  As</h1>
+        <div class="button-container">
+            <a href="/admin-login" class="login-button">Admin</a>
+            <a href="/staff-login" class="login-button">Staff</a>
+        </div>
+        
+        <form action="/" method="post">
+            <!-- ... Existing login form ... -->
+        </form>
+    </div>
+
+
+</body>
+</html>

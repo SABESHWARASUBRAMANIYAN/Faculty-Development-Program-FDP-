@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login History</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Login Time</th>
+            <th>Logout Time</th>
+        </tr>
+        {% for entry in login_history %}
+            <tr>
+                <td>{{ entry.user.name }}</td>
+                <td>{{ entry.login_time }}</td>
+                <td>{{ entry.logout_time or "N/A" }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

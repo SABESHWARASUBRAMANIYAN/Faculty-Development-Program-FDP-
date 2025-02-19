@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Uploaded Files</title>
+</head>
+<body>
+  
+    <div id="uploads" class="content-section">
+        <h1>Uploaded Files</h1>
+        <ul>
+            {% for filename in uploaded_files %}
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#fileModal" data-filename="{{ filename }}">{{ filename }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <button class="back-button" onclick="window.location.href='{{ url_for('login') }}'">Back to Login Page</button>
+    </div>
+    
+    <!-- Modal to display the file content -->
+    <div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fileModalLabel">File Content</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="fileIframe" style="width: 100%;height: 500px;" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        $('#fileModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            var filename = button.data('filename');
+            var fileURL = "{{ url_for('static', filename='uploads/') }}" + filename;
+    
+            var fileIframe = document.getElementById('fileIframe');
+            fileIframe.src = fileURL;
+        });
+    </script>
+    
+
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Files</title>
+</head>
+<body>
+    <h1>Admin Files for Staff ID: {{ staff_id }}</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% else %}
+        <ul>
+            {% for filename in uploaded_files %}
+                <li>
+                    <a href="{{ url_for('download_file', staff_id=staff_id, filename=filename) }}" target="_blank">{{ filename }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <button onclick="window.location.href='{{ url_for('admin_view_files') }}'">Back to Staff ID Input</button>
+    <button onclick="window.location.href='{{ url_for('home1') }}'">Back to Home</button>
+</body>
+</html>

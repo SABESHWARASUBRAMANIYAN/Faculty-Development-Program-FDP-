@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Filter</title>
+</head>
+<body>
+    <!-- Filtering options for FDP Attended table -->
+    <label for="filterColumn">Filter by Column:</label>
+    <select id="filterColumn">
+        <option value="name">Name</option>
+        <option value="designation">Designation</option>
+        <!-- Add more options based on your columns -->
+    </select>
+
+    <!-- Filtering criteria based on the selected column -->
+    <label for="filterCriteria">Filter Criteria:</label>
+    <input type="text" id="filterCriteria" placeholder="Enter filter criteria">
+
+    <button onclick="applyFilter()">Apply Filter</button>
+
+    <!-- Sorting options for FDP Attended table -->
+    <label for="sortColumn">Sort by Column:</label>
+    <select id="sortColumn">
+        <option value="name">Name</option>
+        <option value="from_date">From Date</option>
+        <!-- Add more options based on your columns -->
+    </select>
+
+    <!-- Sorting order -->
+    <label for="sortOrder">Sort Order:</label>
+    <select id="sortOrder">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+    </select>
+
+    <button onclick="applySort()">Apply Sort</button>
+
+    <!-- Display search results -->
+    <div id="searchResults"></div>
+
+    <script>
+        function applyFilter() {
+            const filterColumn = document.getElementById("filterColumn").value;
+            const filterCriteria = document.getElementById("filterCriteria").value;
+
+            // Make an AJAX request to the server with the selected filter criteria
+            // Update the searchResults div with the returned data
+        }
+
+        function applySort() {
+            const sortColumn = document.getElementById("sortColumn").value;
+            const sortOrder = document.getElementById("sortOrder").value;
+
+            // Make an AJAX request to the server with the selected sorting criteria
+            // Update the searchResults div with the returned data
+        }
+    </script>
+</body>
+</html>

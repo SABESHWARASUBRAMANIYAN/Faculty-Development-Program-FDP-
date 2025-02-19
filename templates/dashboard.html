@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fdp upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">   
+    <style>
+        .back-button {
+            background-color: #FDC11C;
+            color: #333;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+    
+        .back-button:hover {
+            background-color: #FFD966;
+        }
+        .abc{
+            text-align: center;
+        }
+    </style>
+      
+</head>
+<body>
+    <div class="navbar">
+        <div class="container">
+            <h1>Welcome to FDP - DIST</h1>
+            
+        </div>
+    </div>
+    <div class="abc">
+    <h1>FDP Certificate Upload</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="fdp_certificate" accept=".jpg, .jpeg , .pdf">
+        <input type="submit" value="Upload">
+    </form>
+    <button class="back-button" onclick="window.location.href='{{ url_for('index') }}'">Back to Login Page</button>   
+    </div>
+   
+</body>
+</html> 
+
+
+
+
+
+<form id="search-form" action="{{ url_for('search') }}" method="GET">
+           
+    <div class="input-group city-search">
+        <input type="text" class="form-control input-city" id='city' name='city' placeholder="Enter your query to search" />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<table border="5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Department</th>
+            <th>Program Name</th>
+            <!-- Add more table headers for each column -->
+        </tr>
+    </thead>
+ 
+    <tbody>
+        {% for result in results %}
+            <tr>
+                <td>{{ result[0] }}</td>
+                <td>{{ result[1] }}</td>
+                <td>{{ result[2] }}</td>
+                <td>{{ result[3] }}</td>
+                <td>{{ result[4] }}</td>
+
+
+                <!-- Add more table cells for each column -->
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if message %}
+{{message}}
+{% endif %}
+<form action="{{ url_for('export_csv') }}" method="POST">
+    {% if results %}
+        <input type="hidden" name="result[]" value="{{ results|tojson|safe }}">
+    {% endif %}
+    <button type="submit" class="btn btn-success">Export to CSV</button>
+</form>

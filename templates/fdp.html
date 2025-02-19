@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <!-- Your head content here -->
+    <title>FDP </title>
+</head>
+<body>
+    <div class="abc">
+        <h1>FDP Certificate Upload</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="fdp_certificate" accept=".jpg, .jpeg">
+            <input type="submit" value="Upload">
+        </form>
+        <button class="back-button" onclick="window.location.href='{{ url_for('login') }}'">Back to Login Page</button>   
+    </div>
+    <!-- Your other content here -->
+</body>
+</html>
