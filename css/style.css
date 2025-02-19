@@ -1,0 +1,60 @@
+.container {
+    width: 300px;
+    margin: 200px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    
+}
+/* Apply red color to the required asterisk */
+span.required {
+    color: red;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container .input-group {
+    margin-bottom: 10px;
+}
+
+.container .input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.container .input-group input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    
+}
+input[type="text"]:hover,
+    input[type="password"]:hover {
+        border-color: #8cff66; /* Change this to the desired green color */
+    }
+.container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-color: #007bff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.container input[type="submit"]:hover {
+    background-color: #326780;
+
+}
+p {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+  
